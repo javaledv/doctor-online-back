@@ -27,7 +27,6 @@ public class PatientDtoConverter implements DtoConverter<Patient, PatientDto> {
         patient.setAddress(dto.getAddress());
         patient.setBirthDate(dto.getBirthDate());
         patient.setGender(dto.getGender());
-        patient.setLogin(dto.getLogin());
 
         return patient;
     }
@@ -42,7 +41,6 @@ public class PatientDtoConverter implements DtoConverter<Patient, PatientDto> {
         dto.setAddress(entity.getAddress());
         dto.setBirthDate(entity.getBirthDate());
         dto.setGender(entity.getGender());
-        dto.setLogin(entity.getLogin());
 
         return dto;
     }

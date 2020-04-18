@@ -22,11 +22,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return employeeService.getByLogin(username)
-                .map(employee -> new User(employee.getLogin(), employee.getPassword(),
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return employeeService.getByEmail(email)
+                .map(employee -> new User(employee.getEmail(), employee.getPassword(),
                         employee.getRoles().stream()
                                 .map(role -> new SimpleGrantedAuthority(role.getName()))
-                                .collect(Collectors.toList()))).orElseThrow(() -> new RuntimeException("User with login:" + username + " is not exist!!!!"));
+                                .collect(Collectors.toList()))).orElseThrow(() -> new RuntimeException("User with email:" + email + " is not exist!!!!"));
     }
 }

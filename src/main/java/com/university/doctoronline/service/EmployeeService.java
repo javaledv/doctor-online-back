@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface EmployeeService extends BaseCrudService<Employee, IdFilter> {
 
-    Optional<Employee> getByLogin(String login);
+    Optional<Employee> getByEmail(String email);
 }

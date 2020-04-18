@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface EmployeeRepository extends BaseCrudRepository<Employee> {
 
-    Optional<Employee> findByLogin(String login);
+    Optional<Employee> findByEmail(String email);
 }

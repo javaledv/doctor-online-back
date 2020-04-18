@@ -10,23 +10,26 @@ import java.util.Set;
 @Entity
 public class Employee extends BaseEntity {
 
+    @Column(unique = true)
+    private String email;
     @Column
     private String firstName;
-
     @Column
     private String middleName;
-
     @Column
     private String lastName;
-
     @Column
     private String password;
-
     @OneToMany
     private Set<Role> roles;
 
-    @Column(unique = true)
-    private String login;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -66,13 +69,5 @@ public class Employee extends BaseEntity {
 
     public void setRoles(Set<Role> role) {
         this.roles = role;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 }

@@ -27,7 +27,7 @@ public class EmployeeServiceImpl extends AbstractBaseCrudService<Employee, IdFil
     }
 
     @Override
-    public Optional<Employee> getByLogin(String login) {
-        return repository.findByLogin(login);
+    public Optional<Employee> getByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }
