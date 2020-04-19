@@ -35,6 +35,7 @@ public class AuthController {
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
         userDto.setRoles(user.getRoles());
+        userDto.setActive(user.isActive());
 
         return userDto;
     }

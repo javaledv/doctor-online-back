@@ -9,7 +9,7 @@ public class UserDto extends BaseDto {
     private String email;
     private Set<Role> roles;
     private String password;
-    private boolean isActive;
+    private boolean active;
 
     public String getEmail() {
         return email;
@@ -36,10 +36,10 @@ public class UserDto extends BaseDto {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.active = active;
     }
 }

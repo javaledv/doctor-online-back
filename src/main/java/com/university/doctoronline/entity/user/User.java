@@ -23,6 +23,8 @@ public class User extends BaseEntity {
     private String password;
     @ManyToMany
     private Set<Role> roles;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isActive = false;
 
     public String getEmail() {
         return email;
@@ -70,5 +72,13 @@ public class User extends BaseEntity {
 
     public void setRoles(Set<Role> role) {
         this.roles = role;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 }

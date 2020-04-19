@@ -57,6 +57,7 @@ public class PatientDtoConverter implements DtoConverter<Patient, PatientDto> {
         dto.setAddress(entity.getAddress());
         dto.setBirthDate(entity.getBirthDate());
         dto.setGender(entity.getGender());
+        dto.setActive(entity.isActive());
 
         return dto;
     }
