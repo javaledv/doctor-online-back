@@ -1,13 +1,14 @@
 package com.university.doctoronline.dto;
 
-import com.university.doctoronline.entity.employee.Role;
+import com.university.doctoronline.entity.user.Role;
 
 import java.util.Set;
 
-public class EmployeeDto extends BaseDto {
+public class UserDto extends BaseDto {
 
     private String email;
     private Set<Role> roles;
+    private String password;
     private boolean isActive;
 
     public String getEmail() {
@@ -24,6 +25,14 @@ public class EmployeeDto extends BaseDto {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean isActive() {

@@ -1,6 +1,7 @@
 package com.university.doctoronline.service.impl;
 
-import com.university.doctoronline.service.EmployeeService;
+import com.university.doctoronline.exception.UserNotFoundException;
+import com.university.doctoronline.service.UserService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,19 +15,19 @@ import java.util.stream.Collectors;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final EmployeeService employeeService;
+    private final UserService userService;
 
-    public UserDetailsServiceImpl(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public UserDetailsServiceImpl(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return employeeService.getByEmail(email)
+        return userService.getByEmail(email)
                 .map(employee -> new User(employee.getEmail(), employee.getPassword(),
                         employee.getRoles().stream()
                                 .map(role -> new SimpleGrantedAuthority(role.getName()))
-                                .collect(Collectors.toList()))).orElseThrow(() -> new RuntimeException("User with email:" + email + " is not exist!!!!"));
+                                .collect(Collectors.toList()))).orElseThrow(UserNotFoundException::new);
     }
 }

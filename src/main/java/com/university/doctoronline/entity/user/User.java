@@ -1,14 +1,15 @@
-package com.university.doctoronline.entity.employee;
+package com.university.doctoronline.entity.user;
 
 import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
-public class Employee extends BaseEntity {
+public class User extends BaseEntity {
 
     @Column(unique = true)
     private String email;
@@ -20,7 +21,7 @@ public class Employee extends BaseEntity {
     private String lastName;
     @Column
     private String password;
-    @OneToMany
+    @ManyToMany
     private Set<Role> roles;
 
     public String getEmail() {

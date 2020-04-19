@@ -1,4 +1,4 @@
-package com.university.doctoronline.entity.employee;
+package com.university.doctoronline.entity.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import java.time.LocalDateTime;
 
 @Entity
-public class Patient extends Employee {
+public class Patient extends User {
 
     @Column
     private String address;

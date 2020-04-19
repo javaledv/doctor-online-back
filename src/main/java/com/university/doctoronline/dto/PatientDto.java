@@ -1,13 +1,12 @@
 package com.university.doctoronline.dto;
 
 
-import com.university.doctoronline.entity.employee.Gender;
+import com.university.doctoronline.entity.user.Gender;
 
 import java.time.LocalDateTime;
 
-public class PatientDto extends BaseDto {
+public class PatientDto extends UserDto {
 
-    private String password;
     private String firstName;
     private String lastName;
     private String middleName;
@@ -15,14 +14,6 @@ public class PatientDto extends BaseDto {
     private String address;
     private Gender gender;
     private LocalDateTime birthDate;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getFirstName() {
         return firstName;

@@ -1,4 +1,4 @@
-package com.university.doctoronline.entity.employee;
+package com.university.doctoronline.entity.user;
 
 import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
 

@@ -3,6 +3,7 @@ package com.university.doctoronline.controller;
 
 import com.university.doctoronline.dto.PatientDto;
 import com.university.doctoronline.dto.converter.PatientDtoConverter;
+import com.university.doctoronline.exception.UserAlreadyExistException;
 import com.university.doctoronline.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +29,16 @@ public class PatientController {
                 .collect(Collectors.toList());
     }
 
+    @PostMapping("/create")
+    public PatientDto create(@RequestBody PatientDto patientDto) {
+        if (patientService.getByEmail(patientDto.getEmail()).isPresent()) {
+            throw new UserAlreadyExistException();
+        }
+        return patientDtoConverter.toDto(patientService.save(patientDtoConverter.toEntity(patientDto)));
+    }
+
     @PostMapping("/save")
     public PatientDto save(@RequestBody PatientDto patientDto) {
         return patientDtoConverter.toDto(patientService.save(patientDtoConverter.toEntity(patientDto)));
     }
-
 }

@@ -1,10 +1,10 @@
-package com.university.doctoronline.entity.employee;
+package com.university.doctoronline.entity.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Doctor extends Employee {
+public class Doctor extends User {
 
     @Column
     private String cabinet;

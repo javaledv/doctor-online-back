@@ -1,7 +1,7 @@
 package com.university.doctoronline.entity;
 
 import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
-import com.university.doctoronline.entity.employee.Doctor;
+import com.university.doctoronline.entity.user.Doctor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

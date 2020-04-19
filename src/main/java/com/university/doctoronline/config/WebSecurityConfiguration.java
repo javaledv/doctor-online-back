@@ -2,7 +2,6 @@ package com.university.doctoronline.config;
 
 import com.university.doctoronline.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -15,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
-
     private final PasswordEncoder passwordEncoder;
 
     public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService,
@@ -34,9 +32,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/patient/create").permitAll()
+                .and()
+                .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .and()
+                .logout().logoutUrl("/auth/logout").logoutSuccessHandler(new BaseLogoutSuccessHandler());
     }
 
     @Override

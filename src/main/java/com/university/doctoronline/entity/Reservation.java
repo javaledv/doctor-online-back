@@ -1,7 +1,7 @@
 package com.university.doctoronline.entity;
 
 import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
-import com.university.doctoronline.entity.employee.Patient;
+import com.university.doctoronline.entity.user.Patient;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

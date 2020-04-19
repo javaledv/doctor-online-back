@@ -1,15 +1,19 @@
 package com.university.doctoronline.exception;
 
-public class UserNotFoundException extends RuntimeException {
+import static com.university.doctoronline.exception.RestExceptionHelper.getExceptionInfo;
+
+public class UserNotFoundException extends NotFoundException {
 
     public UserNotFoundException() {
+        this(getExceptionInfo(NotFoundException.class).getMessage() + ": "
+                + getExceptionInfo(UserNotFoundException.class).getMessage());
     }
 
     public UserNotFoundException(String message) {
-        super(message);
+        super(message, getExceptionInfo(UserNotFoundException.class).getCode());
     }
 
-    public UserNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+    protected UserNotFoundException(String message, int errorCode) {
+        super(message, errorCode);
     }
 }
