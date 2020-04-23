@@ -11,6 +11,8 @@ import java.io.IOException;
 public class BaseLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        authentication.setAuthenticated(false);
+        if (authentication != null) {
+            authentication.setAuthenticated(false);
+        }
     }
 }
