@@ -5,7 +5,6 @@ import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
@@ -25,6 +24,8 @@ public class User extends BaseEntity {
     private Set<Role> roles;
     @Column(columnDefinition = "boolean default false")
     private Boolean isActive = false;
+    @Column
+    private String phoneNumber;
 
     public String getEmail() {
         return email;
@@ -80,5 +81,13 @@ public class User extends BaseEntity {
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/doctor-online
+    url: jdbc:mysql://localhost:3306/doctor_online?useUnicode=yes&characterEncoding=utf-8
     username: root
     password: password
   jpa:

@@ -1,16 +1,13 @@
 package com.university.doctoronline.entity.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 public class Patient extends User {
 
-    @Column
-    private String address;
+    @ManyToOne
+    private Address address;
 
     @Column
     private LocalDateTime birthDate;
@@ -19,11 +16,11 @@ public class Patient extends User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String addres) {
+    public void setAddress(Address addres) {
         this.address = addres;
     }
 

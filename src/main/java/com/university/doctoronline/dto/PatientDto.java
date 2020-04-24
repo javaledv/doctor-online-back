@@ -11,9 +11,10 @@ public class PatientDto extends UserDto {
     private String lastName;
     private String middleName;
     private String login;
-    private String address;
+    private AddressDto address;
     private Gender gender;
-    private LocalDateTime birthDate;
+    private LocalDateTime birthday;
+    private String phoneNumber;
 
     public String getFirstName() {
         return firstName;
@@ -39,11 +40,11 @@ public class PatientDto extends UserDto {
         this.login = login;
     }
 
-    public String getAddress() {
+    public AddressDto getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(AddressDto address) {
         this.address = address;
     }
 
@@ -55,12 +56,12 @@ public class PatientDto extends UserDto {
         this.gender = gender;
     }
 
-    public LocalDateTime getBirthDate() {
-        return birthDate;
+    public LocalDateTime getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthday(LocalDateTime birthday) {
+        this.birthday = birthday;
     }
 
     public String getMiddleName() {
@@ -69,5 +70,13 @@ public class PatientDto extends UserDto {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
