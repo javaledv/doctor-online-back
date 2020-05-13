@@ -1,18 +1,17 @@
 package com.university.doctoronline.service.impl;
 
-import com.reserver.common.starter.data.jpa.basecrud.filter.BaseFilter;
 import com.reserver.common.starter.data.jpa.basecrud.service.impl.AbstractBaseCrudService;
 import com.university.doctoronline.entity.user.User;
-import com.university.doctoronline.filter.IdFilter;
+import com.university.doctoronline.search.IdSearchCriteria;
 import com.university.doctoronline.repository.UserRepository;
 import com.university.doctoronline.service.UserService;
-import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl extends AbstractBaseCrudService<User, IdFilter> implements UserService {
+public class UserServiceImpl extends AbstractBaseCrudService<User, IdSearchCriteria> implements UserService {
 
     private UserRepository repository;
 
@@ -22,12 +21,12 @@ public class UserServiceImpl extends AbstractBaseCrudService<User, IdFilter> imp
     }
 
     @Override
-    public Example<User> createExample(BaseFilter filter) {
-        return null;
+    public Optional<User> getByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     @Override
-    public Optional<User> getByEmail(String email) {
-        return repository.findByEmail(email);
+    public Specification<User> createSpecification(IdSearchCriteria searchCriteria) {
+        return null;
     }
 }

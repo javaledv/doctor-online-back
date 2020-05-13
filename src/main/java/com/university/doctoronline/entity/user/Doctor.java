@@ -1,7 +1,10 @@
 package com.university.doctoronline.entity.user;
 
+import com.university.doctoronline.entity.DoctorSpecialization;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Doctor extends User {
@@ -9,8 +12,8 @@ public class Doctor extends User {
     @Column
     private String cabinet;
 
-    @Column
-    private String specialization;
+    @OneToOne
+    private DoctorSpecialization doctorSpecialization;
 
     public String getCabinet() {
         return cabinet;
@@ -20,11 +23,11 @@ public class Doctor extends User {
         this.cabinet = cabinet;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public DoctorSpecialization getDoctorSpecialization() {
+        return doctorSpecialization;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setDoctorSpecialization(DoctorSpecialization specialization) {
+        this.doctorSpecialization = specialization;
     }
 }

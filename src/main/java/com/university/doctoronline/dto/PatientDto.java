@@ -6,31 +6,11 @@ import com.university.doctoronline.entity.user.Gender;
 import java.time.LocalDateTime;
 
 public class PatientDto extends UserDto {
-
-    private String firstName;
-    private String lastName;
-    private String middleName;
     private String login;
     private AddressDto address;
     private Gender gender;
     private LocalDateTime birthday;
     private String phoneNumber;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getLogin() {
         return login;
@@ -64,13 +44,6 @@ public class PatientDto extends UserDto {
         this.birthday = birthday;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
