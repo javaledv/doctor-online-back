@@ -3,12 +3,10 @@ package com.university.doctoronline.entity;
 import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
 import com.university.doctoronline.entity.user.Doctor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Timetable extends BaseEntity {
@@ -26,11 +24,8 @@ public class Timetable extends BaseEntity {
     @Column
     private LocalDateTime finishAppointmentTime;
 
-    @Column
-    private LocalDateTime startVisitTime;
-
-    @Column
-    private LocalDateTime finishVisitTime;
+    @OneToMany
+    private List<Ticket> tickets;
 
     public Doctor getDoctor() {
         return doctor;
@@ -64,19 +59,11 @@ public class Timetable extends BaseEntity {
         this.finishAppointmentTime = finishAppointmentTime;
     }
 
-    public LocalDateTime getStartVisitTime() {
-        return startVisitTime;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setStartVisitTime(LocalDateTime startVisitTime) {
-        this.startVisitTime = startVisitTime;
-    }
-
-    public LocalDateTime getFinishVisitTime() {
-        return finishVisitTime;
-    }
-
-    public void setFinishVisitTime(LocalDateTime finishVisitTime) {
-        this.finishVisitTime = finishVisitTime;
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

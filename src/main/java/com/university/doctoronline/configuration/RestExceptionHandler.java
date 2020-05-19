@@ -1,4 +1,4 @@
-package com.university.doctoronline.config;
+package com.university.doctoronline.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.university.doctoronline.exception.BadRequestException;

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Reservation extends BaseEntity {
+public class Ticket extends BaseEntity {
 
     @Column
     private LocalDateTime time;
@@ -18,7 +18,7 @@ public class Reservation extends BaseEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private TicketStatus status;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -40,11 +40,11 @@ public class Reservation extends BaseEntity {
         this.timetable = timetable;
     }
 
-    public Status getStatus() {
+    public TicketStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(TicketStatus status) {
         this.status = status;
     }
 }

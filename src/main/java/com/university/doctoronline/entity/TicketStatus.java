@@ -1,5 +1,5 @@
 package com.university.doctoronline.entity;
 
-public enum Status {
+public enum TicketStatus {
     RESERVED, OPENED, DONE
 }

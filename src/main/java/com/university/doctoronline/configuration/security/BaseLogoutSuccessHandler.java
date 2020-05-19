@@ -1,4 +1,4 @@
-package com.university.doctoronline.config;
+package com.university.doctoronline.configuration.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

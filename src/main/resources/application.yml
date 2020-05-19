@@ -4,3 +4,10 @@ spring:
 server:
   servlet:
     context-path: /api
+
+app:
+  websocket:
+    allowed-origins:
+      - "*"
+  timetable:
+      generation-job-cron: "0 0 */1 * * *"

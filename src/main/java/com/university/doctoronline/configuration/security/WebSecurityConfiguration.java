@@ -1,4 +1,4 @@
-package com.university.doctoronline.config;
+package com.university.doctoronline.configuration.security;
 
 import com.university.doctoronline.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Configuration;
