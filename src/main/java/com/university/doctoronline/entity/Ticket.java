@@ -47,4 +47,12 @@ public class Ticket extends BaseEntity {
     public void setStatus(TicketStatus status) {
         this.status = status;
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
