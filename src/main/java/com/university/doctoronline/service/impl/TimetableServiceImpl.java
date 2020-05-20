@@ -49,7 +49,7 @@ public class TimetableServiceImpl extends AbstractBaseCrudService<Timetable, IdS
 
         final var totalAmount = timetables.size();
         final var toCreate = daysAmount - totalAmount;
-        var lastDay = totalAmount == 0 ? LocalDate.now() : timetables.get(totalAmount - 1).getDay();
+        var lastDay = totalAmount == 0 ? LocalDate.now().minusDays(1) : timetables.get(totalAmount - 1).getDay();
 
         for (int i = 0; i < toCreate; i++) {
             final var timetable = new Timetable();
@@ -57,7 +57,7 @@ public class TimetableServiceImpl extends AbstractBaseCrudService<Timetable, IdS
             timetable.setDay(lastDay.plusDays(1));
 
             //TODO replace to app properties hardcoded values
-            final var startAppointmentTime = LocalDateTime.of(lastDay, LocalTime.of(ThreadLocalRandom.current().nextInt(8, 13), 0, 0));
+            final var startAppointmentTime = LocalDateTime.of(timetable.getDay(), LocalTime.of(ThreadLocalRandom.current().nextInt(8, 13), 0, 0));
             timetable.setStartAppointmentTime(startAppointmentTime);
             timetable.setFinishAppointmentTime(startAppointmentTime.plusHours(5));
 

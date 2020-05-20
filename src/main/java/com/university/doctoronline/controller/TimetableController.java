@@ -22,6 +22,8 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping("/timetable")
 public class TimetableController {
 
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-d");
+
     private final TimetableDtoConverter timetableDtoConverter;
     private final TimetableService timetableService;
     private final DoctorService doctorService;
@@ -41,6 +43,6 @@ public class TimetableController {
 
     @GetMapping("/id")
     public Long getId(@RequestParam("doctorId") Doctor doctor, @RequestParam("date") String date) {
-        return timetableService.getBy(doctor, LocalDate.parse(date, DateTimeFormatter.ISO_DATE_TIME)).map(BaseEntity::getId).orElseThrow(NotFoundException::new);
+        return timetableService.getBy(doctor, LocalDate.parse(date, DATE_TIME_FORMATTER)).map(BaseEntity::getId).orElseThrow(NotFoundException::new);
     }
 }
