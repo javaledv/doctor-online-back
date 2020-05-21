@@ -15,6 +15,8 @@ public class TimetableDto extends BaseDto {
 
     private List<TicketDto> tickets;
 
+    private Long updatedTicketId;
+
     public LocalDateTime getStartAppointmentTime() {
         return startAppointmentTime;
     }
@@ -53,5 +55,13 @@ public class TimetableDto extends BaseDto {
 
     public void setTickets(List<TicketDto> tickets) {
         this.tickets = tickets;
+    }
+
+    public Long getUpdatedTicketId() {
+        return updatedTicketId;
+    }
+
+    public void setUpdatedTicketId(Long updatedTicketId) {
+        this.updatedTicketId = updatedTicketId;
     }
 }

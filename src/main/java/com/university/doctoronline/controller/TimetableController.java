@@ -12,6 +12,7 @@ import com.university.doctoronline.service.*;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +56,7 @@ public class TimetableController {
     @Transactional
     @MessageMapping("/timetable/{id}/ticket/update")
     @SendTo("/topic/timetable/{id}")
+    @SendToUser("/topic/timetable/updated")
     public TimetableDto getTimeTable(@DestinationVariable Long id, TicketDto ticketDto) {
 
         final var status = ticketDto.getTicketStatus();
@@ -81,7 +83,10 @@ public class TimetableController {
 
         ticketService.save(targetTicket);
 
-        return timetableDtoConverter.toDto(timetable);
+        final var timetableDto = timetableDtoConverter.toDto(timetable);
+        timetableDto.setUpdatedTicketId(targetTicket.getId());
+
+        return timetableDto;
     }
 
     @GetMapping("/id")
