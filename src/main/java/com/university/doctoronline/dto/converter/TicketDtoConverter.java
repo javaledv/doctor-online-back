@@ -19,6 +19,9 @@ public class TicketDtoConverter implements DtoConverter<Ticket, TicketDto> {
         dto.setTimetableId(entity.getTimetable().getId());
         dto.setTime(entity.getTime());
         dto.setTicketStatus(entity.getStatus());
+        if (entity.getPatient() != null) {
+            dto.setUserId(entity.getPatient().getId());
+        }
 
         return dto;
     }

@@ -25,6 +25,7 @@ public class Timetable extends BaseEntity {
     private LocalDateTime finishAppointmentTime;
 
     @OneToMany
+    @OrderBy("time ASC")
     private List<Ticket> tickets;
 
     public Doctor getDoctor() {

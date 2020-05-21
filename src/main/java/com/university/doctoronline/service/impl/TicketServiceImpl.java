@@ -4,6 +4,7 @@ import com.reserver.common.starter.data.jpa.basecrud.service.impl.AbstractBaseCr
 import com.university.doctoronline.entity.TicketStatus;
 import com.university.doctoronline.entity.Ticket;
 import com.university.doctoronline.entity.Timetable;
+import com.university.doctoronline.entity.user.Patient;
 import com.university.doctoronline.properties.TimetableProperties;
 import com.university.doctoronline.repository.TicketRepository;
 import com.university.doctoronline.search.IdSearchCriteria;
@@ -42,7 +43,12 @@ public class TicketServiceImpl extends AbstractBaseCrudService<Ticket, IdSearchC
             appointmentTime = appointmentTime.plusMinutes(timetableProperties.getTicketAppointmentInterval());
         }
 
-        return repository.saveAll(result);
+        return ticketRepository.saveAll(result);
+    }
+
+    @Override
+    public List<Ticket> findAllBy(Timetable timetable, Patient patient, TicketStatus status) {
+        return ticketRepository.findAllByTimetableAndPatientAndStatus(timetable, patient, status);
     }
 
     @Override

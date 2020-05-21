@@ -4,6 +4,7 @@ import com.reserver.common.starter.data.jpa.basecrud.entity.BaseEntity;
 import com.university.doctoronline.dto.TicketDto;
 import com.university.doctoronline.dto.TimetableDto;
 import com.university.doctoronline.dto.converter.TimetableDtoConverter;
+import com.university.doctoronline.entity.TicketStatus;
 import com.university.doctoronline.entity.user.Doctor;
 import com.university.doctoronline.exception.NotFoundException;
 import com.university.doctoronline.exception.UserNotFoundException;
@@ -55,15 +56,32 @@ public class TimetableController {
     @MessageMapping("/timetable/{id}/ticket/update")
     @SendTo("/topic/timetable/{id}")
     public TimetableDto getTimeTable(@DestinationVariable Long id, TicketDto ticketDto) {
+
+        final var status = ticketDto.getTicketStatus();
         final var patient = patientService.getById(ticketDto.getUserId()).orElseThrow(NotFoundException::new);
+        final var targetTicket = ticketService.getById(ticketDto.getId()).orElseThrow(NotFoundException::new);
+        final var timetable = targetTicket.getTimetable();
 
-        final var ticket = ticketService.getById(ticketDto.getId()).orElseThrow(NotFoundException::new);
-        ticket.setStatus(ticketDto.getTicketStatus());
-        ticket.setPatient(patient);
+        if (status == TicketStatus.OPENED) {
+            targetTicket.setStatus(TicketStatus.OPENED);
+            targetTicket.setPatient(null);
+        } else if (status == TicketStatus.SELECTED) {
+            ticketService.findAllBy(timetable, patient, TicketStatus.SELECTED)
+                    .forEach(ticket -> {
+                        ticket.setStatus(TicketStatus.OPENED);
+                        ticket.setPatient(null);
+                        ticketService.save(ticket);
+                    });
+            targetTicket.setPatient(patient);
+            targetTicket.setStatus(TicketStatus.SELECTED);
+        } else if (status == TicketStatus.RESERVED) {
+            targetTicket.setPatient(patient);
+            targetTicket.setStatus(TicketStatus.RESERVED);
+        }
 
-        ticketService.save(ticket);
+        ticketService.save(targetTicket);
 
-        return timetableDtoConverter.toDto(ticket.getTimetable());
+        return timetableDtoConverter.toDto(timetable);
     }
 
     @GetMapping("/id")
