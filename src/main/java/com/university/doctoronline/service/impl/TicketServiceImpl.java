@@ -80,6 +80,14 @@ public class TicketServiceImpl extends AbstractBaseCrudService<Ticket, TicketSea
             return builder.equal(join(root, "patient", JoinType.INNER).get("id"), patientId);
         };
 
-        return Specification.where(idPredicate).and(patientPredicate);
+        final Specification<Ticket> statusPredicate = (root, query, builder) -> {
+            final var status = searchCriteria.getStatus();
+            if (status == null) {
+                return null;
+            }
+            return builder.equal(root.get("status"), status);
+        };
+
+        return Specification.where(idPredicate).and(patientPredicate).and(statusPredicate);
     }
 }
