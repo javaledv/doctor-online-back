@@ -29,7 +29,7 @@ public class TicketController {
     }
 
     @GetMapping("/list")
-    public Page<TicketInfoDto> getAll(@Valid TicketSearchCriteria searchCriteria, @PageableDefault() Pageable pageable) {
+    public Page<TicketInfoDto> getAll(@Valid TicketSearchCriteria searchCriteria, @PageableDefault(size = 7) Pageable pageable) {
         return ticketService.getPage(searchCriteria, pageable).map(ticketInfoDtoConverter::toDto);
     }
 }
