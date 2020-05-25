@@ -11,3 +11,5 @@ app:
       - "*"
   timetable:
       generation-job-cron: "0 0 */1 * * *"
+  ticket:
+      status-update-job-cron: "*/10 * * * * *"

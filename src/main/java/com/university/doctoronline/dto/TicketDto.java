@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 
 public class TicketDto extends BaseDto {
 
-    private LocalDateTime time;
+    protected LocalDateTime time;
 
-    private TicketStatus ticketStatus;
+    protected TicketStatus ticketStatus;
 
-    private Long timetableId;
+    protected Long timetableId;
 
-    private Long userId;
+    protected Long userId;
 
     public Long getUserId() {
         return userId;
